@@ -1,0 +1,24 @@
+1. first create an ec2 instance 
+2. connect it through ssh client 
+    Open an SSH client.
+
+    Locate your private key file. The key used to launch this instance is react1.pem
+
+    Run this command, if necessary, to ensure your key is not publicly viewable.
+    chmod 400 "react1.pem"
+
+    Connect to your instance using its Public DNS:
+    ec2-**-***-***-***.ap-south-1.compute.amazonaws.com
+
+    Example:
+
+    ssh -i "react1.pem" ubuntu@ec2-**-***-***-***.ap-south-1.compute.amazonaws.com
+3.  sudo apt update
+4.  sudo apt upgrade // this will upgrade the packages and the security patches that recently pushed.
+5.  curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+6.  sudo apt-get install -y nodejs
+7.  if you are on windows then first install wsl by using this command
+    wsl --install
+    go to your project workspace in terminal it will look like this kind of (:/mnt/c/Users/username/Desktop/personalprojects/URL-Shortner-Backend-Server)
+    and run this command  (below command sytnax can change according to terminal below one is for CMD)
+    rsync -avz --exclude "node_modules" --exclude ".git" -e "ssh -i ../../../.ssh/react1.pem" . ubuntu@ec2-**-***-***-***.ap-south-1.compute.amazonaws.com:~/app
