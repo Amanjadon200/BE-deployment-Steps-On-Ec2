@@ -19,6 +19,19 @@
 6.  sudo apt-get install -y nodejs
 7.  if you are on windows then first install wsl by using this command
     wsl --install
+    run command 
+    wsl
     go to your project workspace in terminal it will look like this kind of (:/mnt/c/Users/username/Desktop/personalprojects/URL-Shortner-Backend-Server)
     and run this command  (below command sytnax can change according to terminal below one is for CMD)
     rsync -avz --exclude "node_modules" --exclude ".git" -e "ssh -i ../../../.ssh/react1.pem" . ubuntu@ec2-**-***-***-***.ap-south-1.compute.amazonaws.com:~/app
+    
+    now through ssh you have connected just go to your service on ec2 like cd app then cd whatever your service name
+    npm i
+    npm start (start script should be in package.json-> kind of node index.js)
+
+    but to ensure your node ec2 instance to keep running on ec2 even if you ctrl c (kill your teminal to exit from ssh connection)
+    you should install pm2 in app directory
+    sudo npm i pm2 -g
+    then got to service 
+    pm2 start index.js --name order-service
+    
